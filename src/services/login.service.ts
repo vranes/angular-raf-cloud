@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../environments/environment";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {JwtWrapper} from "../model/model";
 import {Observable} from "rxjs";
 
@@ -10,13 +10,14 @@ import {Observable} from "rxjs";
 export class LoginService {
 
   private jwt: string
-  private permissions: string
+  private permissions: string[]
   private readonly loginApiUrl = environment.loginApiUrl
-  private readonly  apiUrl = environment.apiUrl
 
   constructor(private httpClient: HttpClient) {
     this.jwt = localStorage.getItem("jwt") || ''
-    this.permissions = localStorage.getItem("permissions") || ''
+    this.permissions = []
+    let temp = (localStorage.getItem("permissions") || '').replace("[", "").replace("]", "").split(",")
+    temp.forEach(p => this.permissions.push(p.replace(" ", "")))
   }
 
   setToken(newToken: string): void {
@@ -25,15 +26,17 @@ export class LoginService {
   }
 
   setPermissions(newPermissions: string): void {
-    this.permissions = newPermissions
-    localStorage.setItem("permissions", this.permissions)
+    localStorage.setItem("permissions", newPermissions)
+    let temp = newPermissions.replace('[', '').replace("]", "").split(',')
+    this.permissions = []
+    temp.forEach(p => this.permissions.push(p.replace(" ", "")))
   }
 
   public getJwt(): string {
     return this.jwt
   }
 
-  public getPermissions(): string {
+  public getPermissions(): string[] {
     return this.permissions
   }
 

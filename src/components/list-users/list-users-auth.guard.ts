@@ -12,17 +12,21 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate, CanDeactivate<unknown> {
+export class ListUsersAuthGuard implements CanActivate, CanDeactivate<unknown> {
 
   constructor(private router: Router){}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (localStorage.getItem("token"))
+
+    if (!localStorage.getItem("jwt"))
+      this.router.navigate(['/login'])
+
+    // @ts-ignore
+    if(localStorage.getItem("permissions") && localStorage.getItem("permissions").includes("can_read_users"))
       return true
 
-    this.router.navigate(['/token'])
     return false
   }
   canDeactivate(

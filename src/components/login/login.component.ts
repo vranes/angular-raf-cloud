@@ -26,12 +26,17 @@ export class LoginComponent implements OnInit {
       this.loginService.setPermissions(wrapper.permissions)
       this.errorMessage = ''
       console.log(wrapper)
+
+      if(wrapper.permissions == '[]')
+        this.errorMessage = "You don't have any permissions :("
+      else
+        this.router.navigate(['/'])
     }, error => {
       this.errorMessage = "Wrong credentials. Login unsuccessful."
     })
 
 
-    //this.router.navigate(['/home'])
+
   }
 
 }

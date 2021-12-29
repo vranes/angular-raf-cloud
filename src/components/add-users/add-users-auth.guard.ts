@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ListUsersAuthGuard implements CanActivate, CanDeactivate<unknown> {
+export class AddUsersAuthGuard implements CanActivate, CanDeactivate<unknown> {
 
   constructor(private router: Router){}
 
@@ -24,7 +24,7 @@ export class ListUsersAuthGuard implements CanActivate, CanDeactivate<unknown> {
       this.router.navigate(['/login'])
 
     // @ts-ignore
-    if(localStorage.getItem("permissions") && localStorage.getItem("permissions").includes("can_read_users"))
+    if(localStorage.getItem("permissions") && localStorage.getItem("permissions").includes("can_create_users"))
       return true
 
     return false

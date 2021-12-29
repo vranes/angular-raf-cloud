@@ -1,1 +1,27 @@
-<p>list-users works!</p>
+<div class="container">
+<!--  <form name="list" class="mb-5">-->
+<!--    <button type="submit" class="btn btn-primary" (click)="getAll()">Extract</button>-->
+<!--  </form>-->
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+      <th scope="col">Email</th>
+      <th scope="col">Permissions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let user of users" (click) = "editUser(user)">
+      <td>{{user.name}}</td>
+      <td>{{user.surname}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.permissions}}</td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+

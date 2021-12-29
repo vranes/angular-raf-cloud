@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:8081/api/users',
+  listUsersApiUrl: 'http://localhost:8081/api/users/all',
   loginApiUrl: 'http://localhost:8081/auth/login',
   title: 'user-management',
 };

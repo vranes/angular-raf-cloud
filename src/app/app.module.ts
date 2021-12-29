@@ -7,13 +7,17 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {HomeComponent} from "../components/home/home.component";
 import {LoginComponent} from "../components/login/login.component";
+import { ListUsersComponent } from '../components/list-users/list-users.component';
+import { AddUsersComponent } from '../components/add-users/add-users.component';
 
 // @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    ListUsersComponent,
+    AddUsersComponent
   ],
   imports: [
     BrowserModule,      // modul za ng for iteracije za dinamicko generisanje htmla itd
