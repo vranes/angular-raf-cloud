@@ -13,6 +13,7 @@ export class EditUsersComponent implements OnInit {
   name: string = ''
   surname: string = ''
   permissions: string = ''
+  errorMessage: string = ''
 
   constructor(private service: EditUsersService) {
   }
@@ -27,7 +28,9 @@ export class EditUsersComponent implements OnInit {
 
   editUser(email: string, name: string, surname: string, permissions: string): void {
      this.service.editUser(email, name, surname, permissions).subscribe((wrapper => {
-       //console.log(wrapper)
-     }))
+       console.log(wrapper)
+     }), error => {
+       this.errorMessage = 'Something went wrong.'
+     })
   }
 }

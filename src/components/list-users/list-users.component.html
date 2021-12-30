@@ -14,14 +14,18 @@
     </thead>
 
     <tbody>
-    <tr *ngFor="let user of users" (click) = "editUser(user)">
+    <tr *ngFor="let user of users">
       <td>{{user.name}}</td>
       <td>{{user.surname}}</td>
-      <td>{{user.email}}</td>
+      <td (click) = "editUser(user)">{{user.email}}</td>
       <td>{{user.permissions}}</td>
-
+      <td *ngIf="deletePermission"><button type="delete" (click)="deleteUser(user)">Delete</button></td>
     </tr>
     </tbody>
   </table>
+</div>
+
+<div *ngIf="errorMessage != ''">
+  <label style="color: red"> {{ errorMessage }} </label>
 </div>
 

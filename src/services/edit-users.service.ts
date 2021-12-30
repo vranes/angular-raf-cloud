@@ -31,7 +31,6 @@ export class EditUsersService {
 
   editUser(email: string, name: string, surname: string, permissions: string): Observable<UserWrapper> {
     this.editUserFields(email, name, surname, permissions)
-    console.log(this.user)
     let headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.loginService.getJwt()
     });
