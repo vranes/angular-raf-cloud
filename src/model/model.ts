@@ -3,11 +3,20 @@ export interface JwtWrapper{
   permissions: string
 }
 
-export interface User{
+export interface UserWrapper{
   id: string
   email: string
   name: string
   surname: string
   password: string
   permissions: string[]
+}
+
+export class User{
+  id: string = ''
+  email: string = ''
+  name: string = ''
+  surname: string = ''
+  password: string = ''
+  permissions: string[] = []
 }

@@ -6,6 +6,8 @@ import {ListUsersComponent} from "../components/list-users/list-users.component"
 import {ListUsersAuthGuard} from "../components/list-users/list-users-auth.guard";
 import {AddUsersComponent} from "../components/add-users/add-users.component";
 import {AddUsersAuthGuard} from "../components/add-users/add-users-auth.guard";
+import {EditUsersComponent} from "../components/edit-users/edit-users.component";
+import {EditUsersAuthGuard} from "../components/edit-users/edit-users-auth.guard";
 
 const routes: Routes = [
   {
@@ -20,6 +22,11 @@ const routes: Routes = [
     path: "list-users",
     component: ListUsersComponent,
     canActivate: [ListUsersAuthGuard]
+  },
+  {
+    path: "edit-users",
+    component: EditUsersComponent,
+    canActivate: [EditUsersAuthGuard]
   },
   {
     path: "add-users",

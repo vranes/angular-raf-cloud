@@ -9,6 +9,7 @@ import {HomeComponent} from "../components/home/home.component";
 import {LoginComponent} from "../components/login/login.component";
 import { ListUsersComponent } from '../components/list-users/list-users.component';
 import { AddUsersComponent } from '../components/add-users/add-users.component';
+import { EditUsersComponent } from '../components/edit-users/edit-users.component';
 
 // @ts-ignore
 @NgModule({
@@ -17,7 +18,8 @@ import { AddUsersComponent } from '../components/add-users/add-users.component';
     HomeComponent,
     LoginComponent,
     ListUsersComponent,
-    AddUsersComponent
+    AddUsersComponent,
+    EditUsersComponent
   ],
   imports: [
     BrowserModule,      // modul za ng for iteracije za dinamicko generisanje htmla itd
