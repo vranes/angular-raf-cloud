@@ -20,3 +20,18 @@ export class User{
   password: string = ''
   permissions: string[] = []
 }
+
+export interface Node{
+  id: string
+  name: string
+  status: string
+  created_at: Date
+}
+
+export interface ErrorMessage {
+  id: number,
+  node_id: number,
+  message: string,
+  status: string,
+  date: Date
+}

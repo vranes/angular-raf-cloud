@@ -8,8 +8,9 @@ import {HttpClientModule} from "@angular/common/http";
 import {HomeComponent} from "../components/home/home.component";
 import {LoginComponent} from "../components/login/login.component";
 import { ListUsersComponent } from '../components/list-users/list-users.component';
-import { AddUsersComponent } from '../components/add-users/add-users.component';
 import { EditUsersComponent } from '../components/edit-users/edit-users.component';
+import { CreateUsersComponent } from '../components/create-users/create-users.component';
+import { NodeSearchComponent } from '../components/node-search/node-search.component';
 
 // @ts-ignore
 @NgModule({
@@ -18,8 +19,9 @@ import { EditUsersComponent } from '../components/edit-users/edit-users.componen
     HomeComponent,
     LoginComponent,
     ListUsersComponent,
-    AddUsersComponent,
-    EditUsersComponent
+    EditUsersComponent,
+    CreateUsersComponent,
+    NodeSearchComponent
   ],
   imports: [
     BrowserModule,      // modul za ng for iteracije za dinamicko generisanje htmla itd

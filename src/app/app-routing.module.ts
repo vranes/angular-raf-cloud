@@ -4,10 +4,12 @@ import {HomeComponent} from "../components/home/home.component";
 import {LoginComponent} from "../components/login/login.component";
 import {ListUsersComponent} from "../components/list-users/list-users.component";
 import {ListUsersAuthGuard} from "../components/list-users/list-users-auth.guard";
-import {AddUsersComponent} from "../components/add-users/add-users.component";
-import {AddUsersAuthGuard} from "../components/add-users/add-users-auth.guard";
 import {EditUsersComponent} from "../components/edit-users/edit-users.component";
 import {EditUsersAuthGuard} from "../components/edit-users/edit-users-auth.guard";
+import {CreateUsersComponent} from "../components/create-users/create-users.component";
+import {CreateUsersAuthGuard} from "../components/create-users/create-users-auth.guard";
+import {NodeSearchComponent} from "../components/node-search/node-search.component";
+import {NodeSearchAuthGuard} from "../components/node-search/node-search-auth.guard";
 
 const routes: Routes = [
   {
@@ -30,8 +32,13 @@ const routes: Routes = [
   },
   {
     path: "add-users",
-    component: AddUsersComponent,
-    canActivate: [AddUsersAuthGuard]
+    component: CreateUsersComponent,
+    canActivate: [CreateUsersAuthGuard]
+  },
+  {
+    path: "nodes",
+    component: NodeSearchComponent,
+    canActivate: [NodeSearchAuthGuard]
   }
 ];
 

@@ -16,6 +16,7 @@ export class ListUsersComponent implements OnInit {
   users: User[] = []
   deletePermission: boolean
   errorMessage: string = ''
+  successMessage: string = ''
 
   constructor(private route:Router, private service: ListUsersService, private editService: EditUsersService, private loginService: LoginService, private deleteService: DeleteUsersService) {
     this.getAll()
@@ -40,6 +41,7 @@ export class ListUsersComponent implements OnInit {
         this.users.push(user)
       })
     }, error => {
+      this.successMessage = ''
       this.errorMessage = 'Something went wrong.'
     })
   }
@@ -50,9 +52,14 @@ export class ListUsersComponent implements OnInit {
   }
 
   deleteUser(user: User) {
-    this.deleteService.deleteUser(user.id).subscribe((wrapper => {}),
+    this.deleteService.deleteUser(user.id).subscribe((wrapper => {
+        this.route.navigate(['/list-users'])
+        this.successMessage = 'Deletion successful!'
+        this.errorMessage = ''
+      }),
         error => {
-          this.errorMessage = 'Something went wrong.'
+          this.successMessage = ''
+          this.errorMessage = 'Deletion unsuccessful. Something went wrong.'
         })
   }
 }

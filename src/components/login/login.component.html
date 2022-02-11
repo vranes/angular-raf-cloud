@@ -9,6 +9,11 @@
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
+
+  <div *ngIf="successMessage != ''">
+    <label style="color: green"> {{ successMessage }} </label>
+  </div>
+
   <div *ngIf="errorMessage != ''">
     <label style="color: red"> {{ errorMessage }} </label>
   </div>
