@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../../model/model";
 import {Router} from "@angular/router";
-import {ListUsersService} from "../../services/list-users.service";
-import {EditUsersService} from "../../services/edit-users.service";
+import {ListUsersService} from "../../services/users/list-users.service";
+import {EditUsersService} from "../../services/users/edit-users.service";
 import {LoginService} from "../../services/login.service";
-import {DeleteUsersService} from "../../services/delete-users.service";
+import {DeleteUsersService} from "../../services/users/delete-users.service";
 
 @Component({
   selector: 'app-list-users',

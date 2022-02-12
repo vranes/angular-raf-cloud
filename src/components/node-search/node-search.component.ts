@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
-import {NodeSearchService} from "../../services/node-search.service";
+import {NodeSearchService} from "../../services/nodes/node-search.service";
 import {Node, User} from "../../model/model";
+import {LoginService} from "../../services/login.service";
 
 @Component({
   selector: 'app-node-search',
@@ -10,24 +11,30 @@ import {Node, User} from "../../model/model";
 })
 export class NodeSearchComponent implements OnInit {
 
-  nodes: Node[] = []
+  deletePermission: Boolean = false
   errorMessage: string = ''
+  successMessage: string = ''
 
+  nodes: Node[] = []
   endDate: Date | undefined
   startDate: Date | undefined
   name: string = ''
   status: string = 'RUNNING,STOPPED'
 
 
-  constructor(private route:Router, private service: NodeSearchService) { this.getAll() }
+  constructor(private route:Router, private service: NodeSearchService, private loginService: LoginService) {
+    this.getAll()
+    this.deletePermission = loginService.getPermissions().includes("can_destroy_nodes")
+  }
 
   ngOnInit(): void {
   }
 
   getAll() {
     this.nodes = []
+    this.successMessage = ''
     this.service.getAll().subscribe((response) => {
-      this.errorMessage = ''
+      this.successMessage = ''
       this.nodes = response
     }, error => {
       console.log(error)
@@ -36,6 +43,8 @@ export class NodeSearchComponent implements OnInit {
   }
 
   search(){
+
+    this.successMessage = ''
     //let startDateStr = this.startDate?.toDateString()
     let startDateStr = null
     if (startDateStr == null) startDateStr = ''
@@ -54,6 +63,18 @@ export class NodeSearchComponent implements OnInit {
     }, error => {
       this.errorMessage = 'Something went wrong.'
     })
+  }
+
+  delete(node: Node){
+    this.service.delete(node.id).subscribe((wrapper => {
+        this.route.navigate(['/nodes'])
+        this.successMessage = 'Deletion successful!'
+        this.errorMessage = ''
+      }),
+      error => {
+        this.successMessage = ''
+        this.errorMessage = 'Deletion unsuccessful. Something went wrong.'
+      })
   }
 
 }

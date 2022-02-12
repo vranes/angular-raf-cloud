@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CreateUsersService} from "../../services/create-users.service";
+import {CreateUsersService} from "../../services/users/create-users.service";
 
 @Component({
   selector: 'app-create-users',

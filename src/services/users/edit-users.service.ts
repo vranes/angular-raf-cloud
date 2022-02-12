@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../environments/environment";
-import {LoginService} from "./login.service";
+import {environment} from "../../environments/environment";
+import {LoginService} from "../login.service";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {User, UserWrapper} from "../model/model";
+import {User, UserWrapper} from "../../model/model";
 import {Observable} from "rxjs";
 
 @Injectable({

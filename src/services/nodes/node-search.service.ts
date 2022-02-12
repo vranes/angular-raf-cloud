@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../environments/environment";
+import {environment} from "../../environments/environment";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import {LoginService} from "./login.service";
+import {LoginService} from "../login.service";
 import {Observable} from "rxjs";
-import {Node, UserWrapper} from "../model/model";
+import {Node, UserWrapper} from "../../model/model";
 
 @Injectable({
   providedIn: 'root'
@@ -34,15 +34,13 @@ export class NodeSearchService {
 
     let options = {headers: headers, params: params};
     return this.httpClient.get<Node[]>(this.apiUrl, options)
+  }
 
-    // return this.httpClient.get<Node[]>(this.apiUrl, {
-    //   name: name,
-    //   dateFrom: startDate,
-    //   dateTo: endDate,
-    //   status: status,
-    //   email: localStorage.getItem("email")
-    // }, {
-    //   headers: headers
-    // })
+  delete(id: string): Observable<any> {
+    let headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.loginService.getJwt()
+    });
+    let options = {headers: headers};
+    return this.httpClient.delete(`${this.apiUrl}/${id}`, options)
   }
 }

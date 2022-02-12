@@ -36,7 +36,7 @@
       <!-- <td (click) = "editUser(user)">{{user.email}}</td> -->
       <td>{{node.status}}</td>
       <td>{{node.created_at}}</td>
-      <!-- <td *ngIf="deletePermission"><button type="delete" (click)="deleteUser(user)">Delete</button></td> -->
+       <td *ngIf="deletePermission"><button type="delete" (click)="delete(node)">Delete</button></td>
     </tr>
     </tbody>
   </table>
@@ -44,5 +44,9 @@
 
 <div *ngIf="errorMessage != ''">
   <label style="color: red"> {{ errorMessage }} </label>
+</div>
+
+<div *ngIf="successMessage != ''">
+  <label style="color: green"> {{ successMessage }} </label>
 </div>
 

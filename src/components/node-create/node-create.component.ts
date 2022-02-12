@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
-import {NodeCreateService} from "../../services/node-create.service";
+import {NodeCreateService} from "../../services/nodes/node-create.service";
 
 @Component({
   selector: 'app-node-create',
