@@ -18,7 +18,7 @@ export class NodeSearchService {
       'Authorization': 'Bearer ' + this.loginService.getJwt()
     });
     let options = {headers: headers};
-    return this.httpClient.get<Node[]>(this.apiUrl, options)
+    return this.httpClient.get<Node[]>(this.apiUrl + '/all', options)
   }
 
   search(name: string, statusStr: string, startDate: string, endDate: string): Observable<Node[]> {
@@ -28,11 +28,11 @@ export class NodeSearchService {
     let headers = new HttpHeaders({
       'Authorization': 'Bearer ' + this.loginService.getJwt()
     });
-    let options = {headers: headers};
 
     let params = new HttpParams();
-    params = params.append('name', name).append('status', status.toString()).append('startDate', startDate).append('endDate', endDate);
+    params = params.append('name', name).append('status', status.toString()).append('dateFrom', startDate).append('dateTo', endDate);
 
+    let options = {headers: headers, params: params};
     return this.httpClient.get<Node[]>(this.apiUrl, options)
 
     // return this.httpClient.get<Node[]>(this.apiUrl, {

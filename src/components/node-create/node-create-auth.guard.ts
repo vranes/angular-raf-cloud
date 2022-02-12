@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class NodeSearchAuthGuard implements CanActivate, CanDeactivate<unknown> {
+export class NodeCreateAuthGuard implements CanActivate, CanDeactivate<unknown> {
 
   constructor(private router: Router){}
 
@@ -24,7 +24,7 @@ export class NodeSearchAuthGuard implements CanActivate, CanDeactivate<unknown> 
       this.router.navigate(['/login'])
 
     // @ts-ignore
-    if(localStorage.getItem("permissions") && localStorage.getItem("permissions").includes("can_search_nodes"))
+    if(localStorage.getItem("permissions") && localStorage.getItem("permissions").includes("can_create_nodes"))
       return true
 
     return false

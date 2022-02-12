@@ -8,7 +8,8 @@ export const environment = {
   listUsersApiUrl: 'http://localhost:8081/api/users/all',
   loginApiUrl: 'http://localhost:8081/auth/login',
   title: 'user-management',
-  nodesApiUrl: 'http://localhost:8081/api/nodes'
+  nodesApiUrl: 'http://localhost:8081/api/nodes',
+  errorsApiUrl: 'http://localhost:8081/api/errors',
 };
 
 /*

@@ -6,15 +6,17 @@
 
   <form name="search" (submit)="search()" class="mb-5">
     <div class="form-group">
-      <label for="name">Search nodes by name</label>
+      <label for="name">Search nodes by name  </label>
       <input type="text" class="form-control" id="name" name="name" placeholder="name" required [(ngModel)]="name"/>
-      <label for="name">Search nodes by status</label>
+      <br>
+      <label for="name">Search nodes by status  </label>
       <input type="text" class="form-control" id="status" name="status" placeholder="running,stopped" [(ngModel)]="status">
-      <label for="name">Search nodes by creation date</label>
+      <br>
+      <label for="name">Search nodes by creation date  </label>
       <input type="text" class="form-control" id="from" name="from" placeholder="from" [(ngModel)]="startDate">
       <input type="text" class="form-control" id="to" name="to" placeholder="to" [(ngModel)]="endDate">
     </div>
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-primary">Search</button>
   </form>
 
   <table class="table">

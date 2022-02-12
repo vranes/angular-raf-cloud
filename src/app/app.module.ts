@@ -11,6 +11,8 @@ import { ListUsersComponent } from '../components/list-users/list-users.componen
 import { EditUsersComponent } from '../components/edit-users/edit-users.component';
 import { CreateUsersComponent } from '../components/create-users/create-users.component';
 import { NodeSearchComponent } from '../components/node-search/node-search.component';
+import { NodeCreateComponent } from '../components/node-create/node-create.component';
+import { ErrorMessageComponent } from '../components/error-message/error-message.component';
 
 // @ts-ignore
 @NgModule({
@@ -21,7 +23,9 @@ import { NodeSearchComponent } from '../components/node-search/node-search.compo
     ListUsersComponent,
     EditUsersComponent,
     CreateUsersComponent,
-    NodeSearchComponent
+    NodeSearchComponent,
+    NodeCreateComponent,
+    ErrorMessageComponent
   ],
   imports: [
     BrowserModule,      // modul za ng for iteracije za dinamicko generisanje htmla itd

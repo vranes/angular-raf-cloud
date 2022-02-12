@@ -10,6 +10,9 @@ import {CreateUsersComponent} from "../components/create-users/create-users.comp
 import {CreateUsersAuthGuard} from "../components/create-users/create-users-auth.guard";
 import {NodeSearchComponent} from "../components/node-search/node-search.component";
 import {NodeSearchAuthGuard} from "../components/node-search/node-search-auth.guard";
+import {NodeCreateComponent} from "../components/node-create/node-create.component";
+import {NodeCreateAuthGuard} from "../components/node-create/node-create-auth.guard";
+import {ErrorMessageComponent} from "../components/error-message/error-message.component";
 
 const routes: Routes = [
   {
@@ -39,6 +42,15 @@ const routes: Routes = [
     path: "nodes",
     component: NodeSearchComponent,
     canActivate: [NodeSearchAuthGuard]
+  },
+  {
+    path: "create-node",
+    component: NodeCreateComponent,
+    canActivate: [NodeCreateAuthGuard]
+  },
+  {
+    path: "errors",
+    component: ErrorMessageComponent,
   }
 ];
 

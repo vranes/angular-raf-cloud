@@ -23,6 +23,7 @@ export class LoginService {
   setToken(newToken: string): void {
     this.jwt = newToken
     localStorage.setItem("jwt", this.jwt)
+    console.log(newToken)
   }
 
   setPermissions(newPermissions: string): void {

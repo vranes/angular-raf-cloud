@@ -30,14 +30,17 @@ export class NodeSearchComponent implements OnInit {
       this.errorMessage = ''
       this.nodes = response
     }, error => {
+      console.log(error)
       this.errorMessage = 'Something went wrong.'
     })
   }
 
   search(){
-    let startDateStr = this.startDate?.toDateString()
+    //let startDateStr = this.startDate?.toDateString()
+    let startDateStr = null
     if (startDateStr == null) startDateStr = ''
-    let endDateStr = this.endDate?.toDateString()
+    //let endDateStr = this.endDate?.toDateString()
+    let endDateStr = null
     if (endDateStr == null) endDateStr = ''
 
     this.service.search(

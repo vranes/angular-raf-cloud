@@ -1,0 +1,28 @@
+<div class="container">
+
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Node ID</th>
+      <th scope="col">Message</th>
+      <th scope="col">Status</th>
+      <th scope="col">Date</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let error of errors">
+      <td>{{error.node_id}}</td>
+      <td>{{error.message}}</td>
+      <td>{{error.status}}</td>
+      <td>{{error.date}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="info != ''">
+  <label style="color: red"> {{ info }} </label>
+</div>
+
