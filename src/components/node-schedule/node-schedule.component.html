@@ -1,0 +1,26 @@
+<h3>Node action scheduling</h3>
+<div>
+  <form (submit)="schedule()" class="mb-5">
+    <div class="form-group mb-2">
+      <input required="required" type="text" class="form-control" id="machineID" name="machineID" placeholder="machineID"
+             [(ngModel)]="id">
+    </div>
+    <div class="form-group mb-2">
+      <input required="required" type="text" class="form-control" id="date" name="date" placeholder="date"
+             [(ngModel)]="date">
+    </div>
+    <div class="form-group mb-2">
+      <input required="required" type="text" class="form-control" id="operation" name="operation" placeholder="operation"
+             [(ngModel)]="operation">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <div *ngIf="errorMessage != ''">
+    <label style="color: red"> {{ errorMessage }} </label>
+  </div>
+
+  <div *ngIf="successMessage != ''">
+    <label style="color: green"> {{ successMessage }} </label>
+  </div>
+</div>

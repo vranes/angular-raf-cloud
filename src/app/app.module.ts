@@ -13,6 +13,7 @@ import { CreateUsersComponent } from '../components/create-users/create-users.co
 import { NodeSearchComponent } from '../components/node-search/node-search.component';
 import { NodeCreateComponent } from '../components/node-create/node-create.component';
 import { ErrorMessageComponent } from '../components/error-message/error-message.component';
+import { NodeScheduleComponent } from '../components/node-schedule/node-schedule.component';
 
 // @ts-ignore
 @NgModule({
@@ -25,7 +26,8 @@ import { ErrorMessageComponent } from '../components/error-message/error-message
     CreateUsersComponent,
     NodeSearchComponent,
     NodeCreateComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    NodeScheduleComponent
   ],
   imports: [
     BrowserModule,      // modul za ng for iteracije za dinamicko generisanje htmla itd

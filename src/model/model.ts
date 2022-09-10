@@ -30,7 +30,7 @@ export interface Node{
 
 export interface ErrorMessage {
   id: number,
-  node_id: number,
+  nodeId: number,
   message: string,
   status: string,
   date: Date

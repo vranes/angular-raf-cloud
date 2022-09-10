@@ -36,7 +36,10 @@
       <!-- <td (click) = "editUser(user)">{{user.email}}</td> -->
       <td>{{node.status}}</td>
       <td>{{node.created_at}}</td>
-       <td *ngIf="deletePermission"><button type="delete" (click)="delete(node)">Delete</button></td>
+      <td *ngIf="deletePermission"><button type="delete" (click)="delete(node)">Delete</button></td>
+      <td *ngIf="startPermission"><button type="start" (click)="start(node)">Start</button></td>
+      <td *ngIf="stopPermission"><button type="stop" (click)="stop(node)">Stop</button></td>
+      <td *ngIf="restartPermission"><button type="restart" (click)="restart(node)">Restart</button></td>
     </tr>
     </tbody>
   </table>

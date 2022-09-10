@@ -11,13 +11,16 @@ import {LoginService} from "../../services/login.service";
 })
 export class NodeSearchComponent implements OnInit {
 
-  deletePermission: Boolean = false
+  deletePermission: Boolean
+  startPermission: Boolean
+  stopPermission: Boolean
+  restartPermission: Boolean
   errorMessage: string = ''
   successMessage: string = ''
 
   nodes: Node[] = []
-  endDate: Date | undefined
-  startDate: Date | undefined
+  endDate: string = ''
+  startDate: string = ''
   name: string = ''
   status: string = 'RUNNING,STOPPED'
 
@@ -25,6 +28,9 @@ export class NodeSearchComponent implements OnInit {
   constructor(private route:Router, private service: NodeSearchService, private loginService: LoginService) {
     this.getAll()
     this.deletePermission = loginService.getPermissions().includes("can_destroy_nodes")
+    this.startPermission = loginService.getPermissions().includes("can_start_nodes")
+    this.stopPermission = loginService.getPermissions().includes("can_stop_nodes")
+    this.restartPermission = loginService.getPermissions().includes("can_restart_nodes")
   }
 
   ngOnInit(): void {
@@ -45,18 +51,12 @@ export class NodeSearchComponent implements OnInit {
   search(){
 
     this.successMessage = ''
-    //let startDateStr = this.startDate?.toDateString()
-    let startDateStr = null
-    if (startDateStr == null) startDateStr = ''
-    //let endDateStr = this.endDate?.toDateString()
-    let endDateStr = null
-    if (endDateStr == null) endDateStr = ''
 
     this.service.search(
       this.name,
       this.status,
-      startDateStr,
-      endDateStr,
+      this.startDate,
+      this.endDate,
     ).subscribe((response) => {
       this.errorMessage = ''
       this.nodes = response
@@ -76,5 +76,39 @@ export class NodeSearchComponent implements OnInit {
         this.errorMessage = 'Deletion unsuccessful. Something went wrong.'
       })
   }
+
+  start(node: Node) {
+    this.service.start(node.id).subscribe((response) => {
+      this.successMessage = 'Start successful'
+      this.errorMessage = ''
+    }, error => {
+      console.log(error)
+      this.errorMessage = 'Something went wrong.'
+      this.successMessage = ''
+    })
+  }
+
+  stop(node: Node) {
+    this.service.stop(node.id).subscribe((response) => {
+      this.successMessage = 'Stop successful'
+      this.errorMessage = ''
+    }, error => {
+      console.log(error)
+      this.errorMessage = 'Something went wrong.'
+      this.successMessage = ''
+    })
+  }
+
+  restart(node: Node) {
+    this.service.restart(node.id).subscribe((response) => {
+      this.successMessage = 'Restart successful'
+      this.errorMessage = ''
+    }, error => {
+      console.log(error)
+      this.errorMessage = 'Something went wrong.'
+      this.successMessage = ''
+    })
+  }
+
 
 }

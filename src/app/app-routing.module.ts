@@ -13,6 +13,8 @@ import {NodeSearchAuthGuard} from "../components/node-search/node-search-auth.gu
 import {NodeCreateComponent} from "../components/node-create/node-create.component";
 import {NodeCreateAuthGuard} from "../components/node-create/node-create-auth.guard";
 import {ErrorMessageComponent} from "../components/error-message/error-message.component";
+import {NodeScheduleComponent} from "../components/node-schedule/node-schedule.component";
+import {NodeScheduleAuthGuard} from "../components/node-schedule/node-schedule-auth.guard";
 
 const routes: Routes = [
   {
@@ -49,8 +51,13 @@ const routes: Routes = [
     canActivate: [NodeCreateAuthGuard]
   },
   {
+    path: "schedule",
+    component: NodeScheduleComponent,
+  },
+  {
     path: "errors",
     component: ErrorMessageComponent,
+    canActivate: [NodeScheduleAuthGuard]
   }
 ];
 
